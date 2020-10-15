@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
-    // React.js JSX settings.
-    "jsx": "react",
-    "jsxFactory": "React.createElement",
-    "jsxFragmentFactory": "React.Fragment",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "ES5",
 
     // Module settings.
     "allowSyntheticDefaultImports": true,
@@ -23,7 +22,7 @@
     "strict": true,
 
     // Type-checking settings.
-    "lib": ["ES2020"],
+    "lib": ["ES2020", "DOM"],
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "types": ["jest"]

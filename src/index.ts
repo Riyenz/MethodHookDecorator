@@ -1,24 +1,38 @@
-/**
- * A Branded Type for values parseable to number.
- */
-export type NumberParseable = (number | string | boolean) & {
-  readonly isNumberParseble: unique symbol;
-};
+export const MethodHook = {
+  Before: function (fnName: string) {
+    return function (
+      target: any,
+      _: string,
+      descriptor: PropertyDescriptor,
+    ) {
+      const methodTarget = target[fnName];
 
-/**
- * Check if value is parseable to number.
- * @example ```ts
- * isNumberParseable('AAAA');
- * //=> false
- *
- * isNumberParseable('100');
- * //=> true
- *
- * if (!isNumberParseable(value))
- *   throw new Error('Value can\'t be parseable to `Number`.')
- * return Number(value);
- * ```
- * @param value - An `unknown` value to be checked.
- */
-export const isNumberParseable = (value: unknown): value is NumberParseable =>
-  !Number.isNaN(Number(value));
+      Object.defineProperty(target, fnName, {
+        value: function (...args: any[]) {
+          descriptor.value.apply(this, args);
+          methodTarget.apply(this, args);
+        }
+      })
+
+      return descriptor
+    };
+  },
+  After: function (fnName: string) {
+    return function (
+      target: any,
+      _: string,
+      descriptor: PropertyDescriptor,
+    ) {
+      const methodTarget = target[fnName];
+
+      Object.defineProperty(target, fnName, {
+        value: function (...args: any[]) {
+          methodTarget.apply(this, args);
+          descriptor.value.apply(this, args);
+        }
+      })
+
+      return descriptor
+    };
+  },
+};

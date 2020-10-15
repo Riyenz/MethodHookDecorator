@@ -1,6 +1,6 @@
 {
-  "name": "[libraryName]",
-  "version": "0.0.0",
+  "name": "method-hook-decorator",
+  "version": "1.0.0",
   "description": "",
   "cdn": "dist/index.umd.js",
   "main": "dist/index.js",
@@ -12,6 +12,7 @@
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.8",
     "@types/prettier": "^2.1.2",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
@@ -30,16 +31,14 @@
   },
   "scripts": {
     "doc": "typedoc src/index.ts",
-    "test": "npm run test:lint && npm run test:unit",
-    "test:lint": "eslint \"*/**/*.{ts,js,json}\"",
+    "test": "npm run test:unit",
     "test:unit": "jest",
-    "lint": "eslint \"*/**/*.{ts,js,json}\" --fix",
     "build": "rollup --config ./rollup.config.js",
     "prepublishOnly": "npm run doc && npm run build && npm run test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/[repositoryOwner]/[repositoryName].git"
+    "url": "git+https://github.com/Riyenz/MethodHookDecorator.git"
   },
   "keywords": [
     "typescript",
@@ -47,11 +46,11 @@
     "library"
   ],
   "author": {
-    "name": "[authorFullName]"
+    "name": "Rienz Ivan Otiong"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/[repositoryOwner]/[repositoryName]/issues"
+    "url": "https://github.com/Riyenz/MethodHookDecorator/issues"
   },
-  "homepage": "https://github.com/[repositoryOwner]/[repositoryName]#readme"
+  "homepage": "https://github.com/Riyenz/MethodHookDecorator#readme"
 }

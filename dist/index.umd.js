@@ -1,6 +1,6 @@
 /*!
- * [libraryName] v0.0.0
- * (c) [authorFullName]
+ * method-hook-decorator v1.0.0
+ * (c) Rienz Ivan Otiong
  * Released under the MIT License.
  */
 
@@ -10,26 +10,42 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['[libraryCamelCaseName]'] = {}));
 }(this, (function (exports) { 'use strict';
 
-  /**
-   * Check if value is parseable to number.
-   * @example ```ts
-   * isNumberParseable('AAAA');
-   * //=> false
-   *
-   * isNumberParseable('100');
-   * //=> true
-   *
-   * if (!isNumberParseable(value))
-   *   throw new Error('Value can\'t be parseable to `Number`.')
-   * return Number(value);
-   * ```
-   * @param value - An `unknown` value to be checked.
-   */
-  var isNumberParseable = function (value) {
-      return !Number.isNaN(Number(value));
+  var MethodHook = {
+      Before: function (fnName) {
+          return function (target, _, descriptor) {
+              var methodTarget = target[fnName];
+              Object.defineProperty(target, fnName, {
+                  value: function () {
+                      var args = [];
+                      for (var _i = 0; _i < arguments.length; _i++) {
+                          args[_i] = arguments[_i];
+                      }
+                      descriptor.value.apply(this, args);
+                      methodTarget.apply(this, args);
+                  }
+              });
+              return descriptor;
+          };
+      },
+      After: function (fnName) {
+          return function (target, _, descriptor) {
+              var methodTarget = target[fnName];
+              Object.defineProperty(target, fnName, {
+                  value: function () {
+                      var args = [];
+                      for (var _i = 0; _i < arguments.length; _i++) {
+                          args[_i] = arguments[_i];
+                      }
+                      methodTarget.apply(this, args);
+                      descriptor.value.apply(this, args);
+                  }
+              });
+              return descriptor;
+          };
+      },
   };
 
-  exports.isNumberParseable = isNumberParseable;
+  exports.MethodHook = MethodHook;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

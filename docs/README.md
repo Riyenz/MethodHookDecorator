@@ -6,51 +6,21 @@
 
 ## Index
 
-### Type aliases
+### Object literals
 
-* [NumberParseable](README.md#numberparseable)
+* [MethodHook](README.md#methodhook)
 
-### Functions
+## Object literals
 
-* [isNumberParseable](README.md#isnumberparseable)
+### MethodHook
 
-## Type aliases
+▪ `Const` **MethodHook**: object
 
-### NumberParseable
+*Defined in [index.ts:1](https://github.com/Riyenz/MethodHookDecorator/blob/0262f77/src/index.ts#L1)*
 
-Ƭ  **NumberParseable**: number \| string \| boolean & { isNumberParseble: unique symbol  }
+#### Properties:
 
-*Defined in [index.ts:4](https://github.com/VitorLuizC/typescript-library-boilerplate/blob/bf4667f/src/index.ts#L4)*
-
-A Branded Type for values parseable to number.
-
-## Functions
-
-### isNumberParseable
-
-▸ `Const`**isNumberParseable**(`value`: unknown): value is NumberParseable
-
-*Defined in [index.ts:23](https://github.com/VitorLuizC/typescript-library-boilerplate/blob/bf4667f/src/index.ts#L23)*
-
-Check if value is parseable to number.
-
-**`example`** ```ts
-isNumberParseable('AAAA');
-//=> false
-
-isNumberParseable('100');
-//=> true
-
-if (!isNumberParseable(value))
-  throw new Error('Value can\'t be parseable to `Number`.')
-return Number(value);
-```
-@param value - An `unknown` value to be checked.
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`value` | unknown |
-
-**Returns:** value is NumberParseable
+Name | Type | Value |
+------ | ------ | ------ |
+`After` | function | (fnName: string) => (Anonymous function) |
+`Before` | function | (fnName: string) => (Anonymous function) |
