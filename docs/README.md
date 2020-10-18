@@ -1,8 +1,8 @@
-**[[libraryNameWithSpacesAndUpperCases]](README.md)**
+**[MethodHookDecorator](README.md)**
 
 > Globals
 
-# [libraryNameWithSpacesAndUpperCases]
+# MethodHookDecorator
 
 ## Index
 
@@ -16,11 +16,11 @@
 
 ▪ `Const` **MethodHook**: object
 
-*Defined in [index.ts:1](https://github.com/Riyenz/MethodHookDecorator/blob/0262f77/src/index.ts#L1)*
+*Defined in [index.ts:1](https://github.com/Riyenz/MethodHookDecorator/blob/80dd0e7/src/index.ts#L1)*
 
 #### Properties:
 
-Name | Type | Value |
------- | ------ | ------ |
-`After` | function | (fnName: string) => (Anonymous function) |
-`Before` | function | (fnName: string) => (Anonymous function) |
+Name | Type | Value | Description |
+------ | ------ | ------ | ------ |
+`After` | function | (methodName: string) => (Anonymous function) | Calls the assigned method after the given methodName   |
+`Before` | function | (methodName: string) => (Anonymous function) | Calls the assigned method before the given methodName   |

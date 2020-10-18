@@ -1,36 +1,67 @@
-# [libraryNameWithSpacesAndUpperCases]
-
-[![Build Status](https://travis-ci.org/[repositoryOwner]/[repositoryName].svg?branch=master)](https://travis-ci.org/[repositoryOwner]/[repositoryName])
-[![License](https://badgen.net/github/license/[repositoryOwner]/[repositoryName])](./LICENSE)
-[![Library minified size](https://badgen.net/bundlephobia/min/[libraryName])](https://bundlephobia.com/result?p=[libraryName])
-[![Library minified + gzipped size](https://badgen.net/bundlephobia/minzip/[libraryName])](https://bundlephobia.com/result?p=[libraryName])
+# Method Hook Decorator
 
 ## Installation
 
 This library is published in the NPM registry and can be installed using any compatible package manager.
 
 ```sh
-npm install [libraryName] --save
+npm install @riyenz/method-hook-decorator --save
 
 # For Yarn, use the command below.
-yarn add [libraryName]
+yarn add @riyenz/method-hook-decorator
 ```
 
-### Installation from CDN
+### The Old Way
 
-This module has an UMD bundle available through JSDelivr and Unpkg CDNs.
+```typescript
+@Component({
+  ...
+})
+export class DefaultDashboardComponent implements OnInit {
+  ngOnInit() {
+    this._fetchData();
+    this._setupDisplay();
+  }
 
-```html
-<!-- For UNPKG use the code below. -->
-<script src="https://unpkg.com/[libraryName]"></script>
+  private _fetchData() {
+    ...
+  }
 
-<!-- For JSDelivr use the code below. -->
-<script src="https://cdn.jsdelivr.net/npm/[libraryName]"></script>
+  private _setupDisplay() {
+    ...
+  }
+}
 
-<script>
-  // UMD module is exposed through the "[libraryCamelCaseName]" global variable.
-  console.log([libraryCamelCaseName]);
-</script>
+```
+
+### The Method Hook Way!
+
+You can use method hook to have a clean and nicer looking code.
+
+```typescript
+import { MethodHook } from '@riyenz/method-hook-decorator';
+
+@Component({
+  ...
+})
+export class DefaultDashboardComponent implements OnInit {
+  ngOnInit() {
+    ...
+  }
+
+  // calls _fetchData before ngOnInit
+  @MethodHook.Before('ngOnInit')
+  private _fetchData() {
+    ...
+  }
+
+  // calls _setupDisplay after ngOnInit
+  @MethodHook.After('ngOnInit')
+  private _setupDisplay() {
+    ...
+  }
+}
+
 ```
 
 ## Documentation

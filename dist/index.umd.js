@@ -1,6 +1,6 @@
 /*!
- * method-hook-decorator v1.0.0
- * (c) Rienz Ivan Otiong
+ * @riyenz/method-hook-decorator v1.0.1
+ * (c) undefined
  * Released under the MIT License.
  */
 
@@ -11,10 +11,14 @@
 }(this, (function (exports) { 'use strict';
 
   var MethodHook = {
-      Before: function (fnName) {
+      /**
+       * Calls the assigned method before the given methodName
+       * @param {string} methodName name of the method that will be called after the assigned method
+       */
+      Before: function (methodName) {
           return function (target, _, descriptor) {
-              var methodTarget = target[fnName];
-              Object.defineProperty(target, fnName, {
+              var methodTarget = target[methodName];
+              Object.defineProperty(target, methodName, {
                   value: function () {
                       var args = [];
                       for (var _i = 0; _i < arguments.length; _i++) {
@@ -27,10 +31,14 @@
               return descriptor;
           };
       },
-      After: function (fnName) {
+      /**
+       * Calls the assigned method after the given methodName
+       * @param {string} methodName name of the method that will be called before the assigned method
+       */
+      After: function (methodName) {
           return function (target, _, descriptor) {
-              var methodTarget = target[fnName];
-              Object.defineProperty(target, fnName, {
+              var methodTarget = target[methodName];
+              Object.defineProperty(target, methodName, {
                   value: function () {
                       var args = [];
                       for (var _i = 0; _i < arguments.length; _i++) {

@@ -1,7 +1,7 @@
 {
-  "name": "method-hook-decorator",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@riyenz/method-hook-decorator",
+  "version": "1.0.1",
+  "description": "Use method hooks rather than calling the function inside a function",
   "cdn": "dist/index.umd.js",
   "main": "dist/index.js",
   "types": "types/index.d.ts",
@@ -34,7 +34,8 @@
     "test": "npm run test:unit",
     "test:unit": "jest",
     "build": "rollup --config ./rollup.config.js",
-    "prepublishOnly": "npm run doc && npm run build && npm run test"
+    "prepublishOnly": "npm run doc && npm run build && npm run test",
+    "publish": "npm publish --access public"
   },
   "repository": {
     "type": "git",
@@ -45,12 +46,13 @@
     "boilerplate",
     "library"
   ],
-  "author": {
-    "name": "Rienz Ivan Otiong"
-  },
+  "author": "Rienz Ivan Otiong",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Riyenz/MethodHookDecorator/issues"
   },
-  "homepage": "https://github.com/Riyenz/MethodHookDecorator#readme"
+  "homepage": "https://github.com/Riyenz/MethodHookDecorator#readme",
+  "directories": {
+    "doc": "docs"
+  }
 }
